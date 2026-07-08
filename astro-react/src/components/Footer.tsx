@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer
       id="contatti"
-      className="relative overflow-hidden pt-20 pb-10 border-t border-white/10"
+      className="relative overflow-hidden pt-10 md:pt-20 pb-10 border-t border-white/10"
       style={{
         backgroundColor: '#0b3c82',
         color: '#e0ebff',

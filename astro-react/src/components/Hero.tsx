@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen md:min-h-[90vh] flex items-center bg-gray-900 text-white pt-24 pb-24 md:pt-36 md:pb-48 overflow-hidden">
+    <section className="relative min-h-screen md:min-h-[90vh] flex items-center bg-gray-900 text-white pt-16 pb-24 md:pt-36 md:pb-48 overflow-hidden">
       {/* Background Image with Dark Gray Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
