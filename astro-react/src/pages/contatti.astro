@@ -106,7 +106,7 @@ import ContactForm from '../components/ContactForm';
         {/* Contact Form & Google Map Section */}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Form */}
-          <ContactForm client:load />
+          <ContactForm isCompact={true} client:load />
 
           {/* Map */}
           <div class="bg-white border border-gray-100 rounded-3xl p-4 shadow-sm relative overflow-hidden flex flex-col min-h-[450px]">
