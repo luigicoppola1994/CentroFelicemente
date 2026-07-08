@@ -283,10 +283,19 @@ export default function ChatBot() {
             right: 0;
             width: 100vw;
             max-width: 100vw;
-            height: 100vh;
-            max-height: 100vh;
+            height: 100dvh;
+            max-height: 100dvh;
             border-radius: 0;
             border: none;
+            padding-top: env(safe-area-inset-top, 0);
+          }
+          @supports not (height: 100dvh) {
+            .chatbot-window {
+              height: 100%;
+              position: fixed;
+              top: 0;
+              bottom: 0;
+            }
           }
         }
       `}</style>
