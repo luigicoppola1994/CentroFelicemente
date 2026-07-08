@@ -34,7 +34,7 @@ body {
 }
 
 .btn-primary {
-  background-color: #0071e3;
+  background-color: #0b3c82;
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 980px;
@@ -46,7 +46,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #0077ed;
+  background-color: #0d4799;
   transform: scale(1.02);
 }
 
@@ -111,5 +111,5 @@ body {
 .card-medical:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
   transform: translateY(-4px);
-  border-color: rgba(0, 122, 227, 0.1);
+  border-color: rgba(11, 60, 130, 0.1);
 }
