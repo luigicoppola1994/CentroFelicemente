@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Informativa sui Cookies">
+  <Header client:load />
+
+  <main>
+    <PageHeader 
+      title="Informativa sui Cookies" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cookies', href: '/cookies' }
+      ]} 
+    />
+
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto font-sans text-gray-700 leading-relaxed space-y-8">
+          
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">Cosa sono i Cookies?</h2>
+            <p>
+              I cookie sono piccoli file di testo che i siti visitati dagli utenti inviano ai loro terminali, dove vengono memorizzati per essere ritrasmessi agli stessi siti alla visita successiva. Questo sito utilizza diverse tipologie di cookie per differenti scopi.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">Cookie utilizzati da questo sito</h2>
+            <p>
+              Questo sito si serve di:
+            </p>
+            <ul class="list-disc pl-6 space-y-3">
+              <li>
+                <strong>Cookie Tecnici Necessari:</strong> servono a garantire il corretto funzionamento del sito web, consentendo la navigazione tra le pagine, la memorizzazione delle preferenze e la gestione del consenso (es. per registrare che l'utente ha accettato questa informativa).
+              </li>
+              <li>
+                <strong>Cookie di Terze Parti (Google Maps):</strong> all'interno delle pagine "Contatti" e nel piè di pagina è incorporata la mappa di Google Maps. Google potrebbe installare dei cookie per tracciare le preferenze di visualizzazione della mappa e analizzare il traffico dell'utente.
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">Gestione e Consenso dei Cookies</h2>
+            <p>
+              Durante la prima visita al sito, viene visualizzato un banner informativo in basso. Cliccando su "Accetto tutto", l'utente acconsente all'utilizzo dei cookie sopra indicati.
+            </p>
+            <p>
+              È possibile modificare, bloccare o eliminare i cookie in qualsiasi momento direttamente tramite le impostazioni del proprio browser internet (es. Chrome, Firefox, Safari, Edge). Si fa presente, tuttavia, che la disattivazione dei cookie tecnici potrebbe compromettere alcune funzionalità essenziali del sito web o la visualizzazione delle mappe.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">Informazioni e Contatti</h2>
+            <p>
+              Per qualunque domanda o chiarimento in merito alla nostra Cookie Policy, è possibile contattarci all'indirizzo email: <a href="mailto:info@centrofelicemente.it" class="text-[#0b3c82] underline">info@centrofelicemente.it</a>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Informativa sulla Privacy">
+  <Header client:load />
+
+  <main>
+    <PageHeader 
+      title="Informativa sulla Privacy" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Privacy', href: '/privacy' }
+      ]} 
+    />
+
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto font-sans text-gray-700 leading-relaxed space-y-8">
+          
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">1. Titolare del Trattamento</h2>
+            <p>
+              Il Titolare del trattamento dei dati è la <strong>Cooperativa Sociale Centro Felicemente</strong>, con sede legale e operativa in <strong>Viale Europa, 70, 20090 Cusago (MI) - Italia</strong>.
+              <br />
+              Email di contatto: <a href="mailto:info@centrofelicemente.it" class="text-[#0b3c82] underline">info@centrofelicemente.it</a>
+              <br />
+              PEC: <a href="mailto:centrofelicemente@pec.it" class="text-[#0b3c82] underline">centrofelicemente@pec.it</a>
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">2. Tipologia di Dati Raccolti</h2>
+            <p>
+              I dati personali trattati tramite questo sito internet includono:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Dati di navigazione:</strong> indirizzi IP, nomi a dominio dei computer utilizzati dagli utenti che si connettono al sito, orario della richiesta, metodo utilizzato nel sottoporre la richiesta al server ed altri parametri relativi al sistema operativo dell'utente.</li>
+              <li><strong>Dati forniti volontariamente:</strong> qualora l'utente invii email o comunicazioni ai nostri recapiti indicati sul sito, verranno acquisiti l'indirizzo del mittente nonché gli eventuali altri dati personali inseriti nella missiva.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">3. Finalità e Base Giuridica del Trattamento</h2>
+            <p>
+              I dati sono trattati per le seguenti finalità:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Consentire la corretta navigazione sul sito web (base giuridica: legittimo interesse del titolare).</li>
+              <li>Fornire riscontro a richieste di informazioni inviate dall'utente (base giuridica: esecuzione di misure precontrattuali o contrattuali su richiesta dell'interessato).</li>
+              <li>Adempiere a obblighi di legge o normativi a cui è soggetto il Titolare (base giuridica: obbligo legale).</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">4. Modalità di Trattamento e Conservazione</h2>
+            <p>
+              Il trattamento viene effettuato con strumenti automatizzati e/o manuali in modalità idonee a garantire la massima sicurezza e riservatezza. I dati personali saranno conservati per il tempo strettamente necessario a conseguire gli scopi per cui sono stati raccolti, ed in ogni caso non oltre i termini previsti dalla legge.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">5. Diritti dell'Interessato</h2>
+            <p>
+              In conformità al Regolamento UE 2016/679 (GDPR), gli utenti hanno il diritto di:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Accedere ai propri dati personali ed ottenerne copia.</li>
+              <li>Chiedere la rettifica, la cancellazione o la limitazione del trattamento.</li>
+              <li>Opporsi al trattamento dei dati personali.</li>
+              <li>Revocare il consenso in qualsiasi momento, senza pregiudicare la liceità del trattamento basata sul consenso prestato prima della revoca.</li>
+              <li>Proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali.</li>
+            </ul>
+            <p class="pt-2">
+              Per esercitare tali diritti, l'interessato può inviare una richiesta scritta ai contatti del Titolare sopra indicati.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

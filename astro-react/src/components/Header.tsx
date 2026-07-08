@@ -33,7 +33,7 @@ export default function Header() {
               </div>
             </div>
             <a href="/progetti" className="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-blue-400 transition-colors font-sans font-medium">Progetti</a>
-            <a href="/#contatti" className="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-blue-400 transition-colors font-sans font-medium">Contatti</a>
+            <a href="/contatti" className="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-blue-400 transition-colors font-sans font-medium">Contatti</a>
 
             <a href="/sostienici" className="btn-primary">Sostienici</a>
           </nav>
@@ -65,7 +65,7 @@ export default function Header() {
               <a href="/servizi" className="text-gray-900 dark:text-gray-100 hover:text-primary font-sans font-medium">Servizi</a>
               <a href="/certificazioni" className="text-gray-900 dark:text-gray-100 hover:text-primary font-sans font-medium">Certificazioni</a>
               <a href="/progetti" className="text-gray-900 dark:text-gray-100 hover:text-primary font-sans font-medium">Progetti</a>
-              <a href="/#contatti" className="text-gray-900 dark:text-gray-100 hover:text-primary font-sans font-medium">Contatti</a>
+              <a href="/contatti" className="text-gray-900 dark:text-gray-100 hover:text-primary font-sans font-medium">Contatti</a>
               <a href="/sostienici" className="btn-primary text-center">Sostienici</a>
             </div>
           </nav>

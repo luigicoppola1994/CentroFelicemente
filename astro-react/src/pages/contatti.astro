@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Contatti">
+  <Header client:load />
+
+  <main>
+    {/* Page Header */}
+    <PageHeader 
+      title="Contatti" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Contatti', href: '/contatti' }
+      ]} 
+    />
+
+    {/* Info Cards Section */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="space-y-3 md:space-y-4 mb-16 text-center">
+          <span class="inline-block text-xs font-semibold tracking-widest text-[#0b3c82] bg-blue-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+            Come trovarci
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+            Riferimenti e Sede
+          </h2>
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans max-w-2xl mx-auto">
+            Siamo a tua disposizione per informazioni, appuntamenti e chiarimenti sui nostri servizi clinici e riabilitativi.
+          </p>
+        </div>
+
+        {/* 3 Grid Cards */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {/* Card 1: Dove siamo */}
+          <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+            <div class="w-12 h-12 rounded-2xl bg-[#0b3c82]/10 flex items-center justify-center text-[#0b3c82] text-2xl mb-6 group-hover:scale-110 transition-transform">
+              📍
+            </div>
+            <h3 class="text-xl font-display font-bold text-gray-900 mb-3 font-sans">Sede e Indirizzo</h3>
+            <p class="text-gray-600 font-sans text-base leading-relaxed mb-4">
+              Il nostro centro specialistico si trova in una posizione strategica a Cusago (MI).
+            </p>
+            <p class="text-gray-900 font-bold font-sans">
+              Viale Europa, 70<br />
+              20090 Cusago (MI) - Italia
+            </p>
+          </div>
+
+          {/* Card 2: Telefoni & Email */}
+          <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+            <div class="w-12 h-12 rounded-2xl bg-[#e30613]/10 flex items-center justify-center text-[#e30613] text-2xl mb-6 group-hover:scale-110 transition-transform">
+              📞
+            </div>
+            <h3 class="text-xl font-display font-bold text-gray-900 mb-3 font-sans">Contatti Diretti</h3>
+            <p class="text-gray-600 font-sans text-base leading-relaxed mb-4">
+              Chiamaci per fissare una visita o inviaci un'email per domande amministrative.
+            </p>
+            <div class="space-y-2">
+              <a href="tel:+390235954902" class="block text-[#0b3c82] hover:text-[#e30613] font-bold text-lg font-sans transition-colors">
+                Tel: 02 3595 4902
+              </a>
+              <a href="mailto:info@centrofelicemente.it" class="block text-gray-600 hover:text-[#0b3c82] font-sans transition-colors">
+                info@centrofelicemente.it
+              </a>
+              <a href="mailto:centrofelicemente@pec.it" class="block text-gray-400 hover:text-[#0b3c82] text-xs font-sans transition-colors">
+                PEC: centrofelicemente@pec.it
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3: Orari & Fiscale */}
+          <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
+              ⏰
+            </div>
+            <h3 class="text-xl font-display font-bold text-gray-900 mb-3 font-sans">Orari & Info Fiscali</h3>
+            <p class="text-gray-600 font-sans text-base leading-relaxed mb-4">
+              Riceviamo esclusivamente su appuntamento nei seguenti giorni.
+            </p>
+            <p class="text-gray-900 font-bold font-sans mb-3">
+              Lunedì - Sabato: <span class="text-[#0b3c82]">8:00 - 20:00</span>
+            </p>
+            <div class="text-xs text-gray-400 font-sans space-y-0.5">
+              <p>Codice Univoco: N92GLON</p>
+              <p>P.IVA: 12087780966</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Google Map Iframe Section */}
+        <div class="bg-white border border-gray-100 rounded-3xl p-4 shadow-sm relative overflow-hidden">
+          <h3 class="text-2xl font-display font-bold text-gray-900 mb-4 px-4 pt-2 font-sans">Mappa Interattiva</h3>
+          <div class="rounded-2xl overflow-hidden border border-gray-100 h-[450px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11199.143870731363!2d9.0485128!3d45.4338157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd33d5d415de0b343!2sCentro%20Felicemente!5e0!3m2!1sit!2sit!4v1672846733912!5m2!1sit!2sit"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+import CertificazioniTabs from '../components/CertificazioniTabs';
+---
+
+<Layout title="Certificazioni DSA">
+  <Header client:load />
+
+  <main>
+    {/* Page Header Riutilizzabile */}
+    <PageHeader 
+      title="Certificazioni DSA" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Certificazioni', href: '/certificazioni' }
+      ]} 
+    />
+
+    {/* Intro Section - Stessa struttura di Chi Siamo e Servizi */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="space-y-3 md:space-y-4 mb-16 text-center">
+          <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+            Diagnosi e Potenziamento
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+            Disturbi Specifici dell'Apprendimento
+          </h2>
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans max-w-2xl mx-auto">
+            Presso la cooperativa Felicemente è presente un'équipe autorizzata dalle ATS di Milano Ovest Rhodense a effettuare attività di prima certificazione diagnostica DSA.
+          </p>
+        </div>
+
+        {/* Accordion Component */}
+        <CertificazioniTabs client:load />
+      </div>
+    </section>
+
+  </main>
+
+  <Footer client:load />
+</Layout>

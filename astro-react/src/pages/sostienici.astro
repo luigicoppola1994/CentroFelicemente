@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Sostienici">
+  <Header client:load />
+
+  <main>
+    {/* Page Header */}
+    <PageHeader 
+      title="Sostienici" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Sostienici', href: '/sostienici' }
+      ]} 
+    />
+
+    {/* Intro Section */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        
+        {/* Intro text */}
+        <div class="text-center mb-16 space-y-4">
+          <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+            Il Tuo Contributo
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+            Sostienici
+          </h2>
+          <div class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans space-y-4 max-w-3xl mx-auto">
+            <p>
+              L’emergenza sanitaria e sociale legata al Covid ha avuto un forte impatto negativo sulla sostenibilità di tutti i nostri servizi assistenziali ma, nonostante ciò, continuiamo la nostra grande sfida con ancor più tenacia e passione di prima.
+            </p>
+            <p>
+              Vogliamo continuare a credere potercela fare …vogliamo esserci, accompagnare e assistere le famiglie, i bambini, i ragazzi che hanno bisogno e che avranno bisogno di noi.
+            </p>
+            <p class="font-semibold text-gray-950 text-lg">
+              Non possiamo fermarci proprio adesso… e per questo abbiamo bisogno del contributo di tutti!
+            </p>
+            <p class="text-[#0b3c82] font-bold text-xl">
+              A partire da TE
+            </p>
+            <p>
+              Attraverso una donazione libera anche Tu puoi contribuire a realizzare questo nostro impegno.
+            </p>
+          </div>
+        </div>
+
+        {/* 5x1000 & Bank Details Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          {/* Card 1: 5 x 1000 */}
+          <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow relative overflow-hidden">
+            <div class="space-y-6">
+              <div class="w-12 h-12 rounded-2xl bg-[#e30613]/10 flex items-center justify-center text-[#e30613] text-2xl font-bold group-hover:scale-110 transition-transform">
+                ✍️
+              </div>
+              <h3 class="text-2xl font-display font-bold text-gray-900 font-sans">
+                SOSTIENICI PER UN FUTURO MIGLIORE
+              </h3>
+              <p class="text-gray-600 font-sans leading-relaxed text-sm">
+                Con la dichiarazione dei redditi puoi destinare il tuo 5 x1000 alla Cooperativa Sociale Centro Felicemente.
+              </p>
+              <div class="space-y-3 font-sans text-sm text-gray-700">
+                <p class="font-bold text-[#e30613]">È semplice:</p>
+                <p>
+                  Apponi la tua firma sul 730 o sul Modello Unico nel riquadro <strong>“Sostegno del Volontariato e delle Organizzazioni Non Lucrative di Utilità Sociale”</strong> e indica nell’apposito spazio il nostro codice fiscale.
+                </p>
+                <div class="p-4 bg-red-50/50 border border-red-100 rounded-2xl text-center select-all cursor-pointer">
+                  <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Codice Fiscale Cooperativa</p>
+                  <p class="text-xl font-bold text-[#e30613] font-mono">12087780966</p>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed pt-2">
+                  In caso non si fosse tenuti a presentare la dichiarazione dei redditi è possibile donare il proprio 5 x 1000 allo stesso modo tramite la sezione “Scelta per la destinazione del cinque per mille dell’IRPEF” della propria Certificazione Unica (CU) rivolgendosi direttamente al proprio caf, patronato o commercialista.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Bonifico Bancario */}
+          <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow relative overflow-hidden">
+            <div class="space-y-6">
+              <div class="w-12 h-12 rounded-2xl bg-[#0b3c82]/10 flex items-center justify-center text-[#0b3c82] text-2xl group-hover:scale-110 transition-transform">
+                🏦
+              </div>
+              <h3 class="text-2xl font-display font-bold text-gray-900 font-sans">
+                Donazione Tramite Bonifico
+              </h3>
+              <p class="text-gray-600 font-sans leading-relaxed text-sm">
+                Puoi effettuare anche una donazione semplice mediante bonifico bancario al nostro IBAN o recandoti presso la nostra sede.
+              </p>
+              <div class="space-y-4 font-sans text-sm text-gray-700">
+                <p class="font-bold text-[#0b3c82]">Estremi per il bonifico:</p>
+                <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl space-y-3">
+                  <div>
+                    <span class="text-xs text-gray-500 block uppercase tracking-wider">Beneficiario</span>
+                    <strong class="text-gray-950 font-bold">Cooperativa Sociale Centro Felicemente</strong>
+                  </div>
+                  <div>
+                    <span class="text-xs text-gray-500 block uppercase tracking-wider">Banca</span>
+                    <strong class="text-gray-950">Banca Intesa</strong>
+                  </div>
+                  <div class="select-all cursor-pointer">
+                    <span class="text-xs text-gray-500 block uppercase tracking-wider">IBAN</span>
+                    <code class="text-sm font-bold text-[#0b3c82] block font-mono bg-white p-2 rounded-lg border border-gray-100 mt-1 text-center">
+                      IT38T0306909496100000015837
+                    </code>
+                  </div>
+                </div>
+                <p class="text-center font-medium text-gray-900 pt-4">
+                  Invita amici e parenti a fare lo stesso e aiutaci a compiere grandi passi!
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

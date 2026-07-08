@@ -92,7 +92,7 @@ export default function Footer() {
               <h3 className="text-xl font-display font-bold tracking-tight text-gray-900 mb-6 font-sans">NAVIGATORE</h3>
               <div className="relative rounded-2xl overflow-hidden border border-gray-150 shadow-sm">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.123456789!2d9.012345678!3d45.456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI3JzI0LjQiTiA5wrAwMCc0NC40IkU!5e0!3m2!1sit!2sit!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11199.143870731363!2d9.0485128!3d45.4338157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd33d5d415de0b343!2sCentro%20Felicemente!5e0!3m2!1sit!2sit!4v1672846733912!5m2!1sit!2sit"
                   width="100%"
                   height="220"
                   style={{ border: 0 }}
