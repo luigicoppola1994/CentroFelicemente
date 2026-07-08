@@ -1,110 +1,105 @@
+import React, { useState } from 'react';
+
 export default function ContactForm() {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    // Simula l'invio del modulo
+    setTimeout(() => {
+      setStatus('success');
+    }, 1500);
+  };
+
+  if (status === 'success') {
+    return (
+      <div className="bg-emerald-50 border border-emerald-100 rounded-3xl p-8 text-center h-full flex flex-col items-center justify-center">
+        <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mb-4">
+          ✓
+        </div>
+        <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Messaggio Inviato!</h3>
+        <p className="text-gray-600">
+          Grazie per averci contattato. Ti risponderemo il prima possibile all'indirizzo email che ci hai fornito.
+        </p>
+        <button 
+          onClick={() => setStatus('idle')}
+          className="mt-6 text-[#0b3c82] font-semibold hover:underline"
+        >
+          Invia un altro messaggio
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <section id="info" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      {/* Decorative background blurs */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-400/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-red-400/5 rounded-full blur-3xl -z-10"></div>
-
-      <div className="container-custom">
-        <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <span className="text-xs font-semibold tracking-widest text-[#0b3c82] uppercase bg-blue-50 px-3.5 py-1.5 rounded-full">
-              Contatti
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mt-4 mb-4 tracking-tight">
-              Richiedi Informazioni
-            </h2>
-            <p className="text-lg text-gray-600 max-w-lg mx-auto leading-relaxed">
-              Siamo qui per rispondere alle tue domande e supportarti nel tuo percorso con professionalità e riservatezza.
-            </p>
+    <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm relative overflow-hidden h-full">
+      <h3 className="text-2xl font-display font-bold text-gray-900 mb-6 font-sans">Scrivici un messaggio</h3>
+      
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nome e Cognome *</label>
+            <input 
+              type="text" 
+              id="name" 
+              required
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0b3c82]/20 focus:border-[#0b3c82] transition-colors outline-none font-sans"
+              placeholder="Mario Rossi"
+            />
           </div>
-
-          {/* Form Card */}
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100 border border-gray-100/80">
-            <form className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name */}
-                <div className="space-y-2">
-                  <label htmlFor="name" className="block text-gray-800 text-sm font-semibold">
-                    Il tuo nome
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Nome e Cognome"
-                    className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#0b3c82] focus:border-transparent outline-none transition-all duration-300 bg-gray-50/50 hover:bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-400 text-sm"
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-gray-800 text-sm font-semibold">
-                    La tua email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="esempio@email.com"
-                    className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#0b3c82] focus:border-transparent outline-none transition-all duration-300 bg-gray-50/50 hover:bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-400 text-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Subject */}
-              <div className="space-y-2">
-                <label htmlFor="subject" className="block text-gray-800 text-sm font-semibold">
-                  Oggetto della richiesta
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  placeholder="Seleziona o descrivi il motivo del contatto"
-                  className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#0b3c82] focus:border-transparent outline-none transition-all duration-300 bg-gray-50/50 hover:bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-400 text-sm"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="space-y-2">
-                <label htmlFor="message" className="block text-gray-800 text-sm font-semibold">
-                  Il tuo messaggio <span className="text-gray-400 font-normal">(facoltativo)</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  placeholder="Scrivi qui i dettagli della tua richiesta..."
-                  className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#0b3c82] focus:border-transparent outline-none transition-all duration-300 resize-none bg-gray-50/50 hover:bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-400 text-sm"
-                />
-              </div>
-
-              {/* Privacy Policy disclaimer */}
-              <p className="text-xs text-gray-400 leading-normal">
-                Inviando questo modulo acconsenti al trattamento dei dati personali in conformità con la nostra Privacy Policy.
-              </p>
-
-              {/* Submit Button */}
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full py-4 px-8 bg-[#0b3c82] hover:bg-[#0b3c82]/95 text-white font-bold rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg text-base tracking-wide flex items-center justify-center gap-2"
-                >
-                  <span>Invia messaggio</span>
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-              </div>
-            </form>
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Telefono</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0b3c82]/20 focus:border-[#0b3c82] transition-colors outline-none font-sans"
+              placeholder="333 1234567"
+            />
           </div>
         </div>
-      </div>
-    </section>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            required
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0b3c82]/20 focus:border-[#0b3c82] transition-colors outline-none font-sans"
+            placeholder="mario.rossi@email.com"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Messaggio *</label>
+          <textarea 
+            id="message" 
+            rows={4}
+            required
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0b3c82]/20 focus:border-[#0b3c82] transition-colors outline-none font-sans resize-none"
+            placeholder="Scrivi qui la tua richiesta per prenotazioni o informazioni..."
+          ></textarea>
+        </div>
+
+        <div className="pt-2">
+          <button 
+            type="submit" 
+            disabled={status === 'submitting'}
+            className="w-full bg-[#0b3c82] hover:bg-[#082a5c] text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex justify-center items-center gap-2"
+          >
+            {status === 'submitting' ? 'Invio in corso...' : 'Invia Messaggio'}
+            {status !== 'submitting' && (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            )}
+          </button>
+        </div>
+        
+        <p className="text-xs text-gray-400 mt-4 text-center">
+          Inviando il modulo, accetti il trattamento dei dati personali ai sensi del GDPR.
+        </p>
+      </form>
+    </div>
   );
 }

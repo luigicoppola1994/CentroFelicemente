@@ -1,9 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-// ─── Knowledge Base ──────────────────const FAQS: { tags: string[]; question: string; answer: string }[] = [
-
 // ─── Knowledge Base ───────────────────────────────────────────────────────────
-
 const FAQS: { tags: string[]; question: string; answer: string }[] = [
   {
     tags: ['logopedia', 'logopedista', 'linguaggio', 'comunicazione', 'parlare'],
@@ -136,6 +133,7 @@ type Msg = {
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
     {
       id: 0,
@@ -151,6 +149,25 @@ export default function ChatBot() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // Rileva lo scroll per cambiare colore del bottone vicino al footer
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Se si è a meno di 350px dalla fine della pagina, diventiamo bianchi
+      if (documentHeight - scrollPosition < 350) {
+        setIsNearFooter(true);
+      } else {
+        setIsNearFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // controllo iniziale
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const addMsg = (msg: Omit<Msg, 'id'>) => {
     setCounter((c) => {
@@ -231,271 +248,324 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Floating button */}
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-label="Apri assistente virtuale"
-        style={{
-          position: 'fixed',
-          bottom: '28px',
-          right: '28px',
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          backgroundColor: '#0b3c82',
-          color: '#fff',
-          border: 'none',
-          boxShadow: '0 8px 24px rgba(11,60,130,0.35)',
-          cursor: 'pointer',
-          zIndex: 99998,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '26px',
-          transition: 'transform 0.2s, background-color 0.2s',
-        }}
-        onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
-        onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-      >
-        {open ? '✕' : '💬'}
-      </button>
+      <style>{`
+        .chatbot-window {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          width: 360px;
+          max-width: calc(100vw - 40px);
+          height: 600px;
+          max-height: calc(100vh - 40px);
+          background-color: #fff;
+          border-radius: 20px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+          display: flex;
+          flex-direction: column;
+          z-index: 99999;
+          overflow: hidden;
+          font-family: 'Inter', sans-serif;
+          border: 1px solid #e5e7eb;
+          transform: translateY(0);
+          opacity: 1;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
 
-      {/* Chat window */}
-      {open && (
-        <div
+        .chatbot-window-hidden {
+          transform: translateY(20px);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        @media (max-width: 640px) {
+          .chatbot-window {
+            bottom: 0;
+            right: 0;
+            width: 100vw;
+            max-width: 100vw;
+            height: 100vh;
+            max-height: 100vh;
+            border-radius: 0;
+            border: none;
+          }
+        }
+      `}</style>
+
+      {/* Floating button - Nascosto quando la chat è aperta */}
+      {!open && (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Apri assistente virtuale"
           style={{
             position: 'fixed',
-            bottom: '104px',
+            bottom: '28px',
             right: '28px',
-            width: '360px',
-            maxHeight: '560px',
-            backgroundColor: '#fff',
-            borderRadius: '20px',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            backgroundColor: isNearFooter ? '#ffffff' : '#0b3c82',
+            color: isNearFooter ? '#0b3c82' : '#ffffff',
+            border: 'none',
+            boxShadow: isNearFooter ? '0 8px 24px rgba(0,0,0,0.15)' : '0 8px 24px rgba(11,60,130,0.35)',
+            cursor: 'pointer',
+            zIndex: 99998,
             display: 'flex',
-            flexDirection: 'column',
-            zIndex: 99997,
-            overflow: 'hidden',
-            fontFamily: 'Inter, sans-serif',
-            border: '1px solid #e5e7eb',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '26px',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+          onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+        >
+          💬
+        </button>
+      )}
+
+      {/* Chat window */}
+      <div className={open ? 'chatbot-window' : 'chatbot-window chatbot-window-hidden'}>
+        {/* Header con X di chiusura */}
+        <div
+          style={{
+            backgroundColor: '#0b3c82',
+            color: '#fff',
+            padding: '16px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            flexShrink: 0,
           }}
         >
-          {/* Header */}
-          <div
-            style={{
-              backgroundColor: '#0b3c82',
-              color: '#fff',
-              padding: '16px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              flexShrink: 0,
-            }}
-          >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div
               style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(255,255,255,0.15)',
+                backgroundColor: '#fff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '20px',
                 flexShrink: 0,
+                overflow: 'hidden',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
               }}
             >
-              🤝
+              <img src="/faviconcentro.jpg" alt="Logo Centro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <div>
-              <p style={{ fontWeight: 700, fontSize: '14px', margin: 0 }}>Assistente Centro Felicemente</p>
-              <p style={{ fontSize: '11px', opacity: 0.75, margin: 0 }}>Rispondo alle domande sul centro</p>
+              <p style={{ fontWeight: 700, fontSize: '14px', margin: 0 }}>Assistente</p>
+              <p style={{ fontSize: '11px', opacity: 0.75, margin: 0 }}>Centro Felicemente</p>
             </div>
           </div>
-
-          {/* Messages */}
-          <div
+          
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Chiudi"
             style={{
-              flex: 1,
-              overflowY: 'auto',
-              padding: '16px',
+              background: 'transparent',
+              border: 'none',
+              color: '#fff',
+              fontSize: '20px',
+              cursor: 'pointer',
+              padding: '4px',
               display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              backgroundColor: '#f8faff',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: 0.8,
+              transition: 'opacity 0.2s',
             }}
+            onMouseOver={(e) => { e.currentTarget.style.opacity = '1'; }}
+            onMouseOut={(e) => { e.currentTarget.style.opacity = '0.8'; }}
           >
-            {messages.map((msg) => (
-              <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {/* Bubble */}
+            ✕
+          </button>
+        </div>
+
+        {/* Messages */}
+        <div
+          style={{
+            flex: 1,
+            overflowY: 'auto',
+            padding: '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            backgroundColor: '#f8faff',
+          }}
+        >
+          {messages.map((msg) => (
+            <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {/* Bubble */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                }}
+              >
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                    maxWidth: '85%',
+                    padding: '10px 14px',
+                    borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                    backgroundColor: msg.role === 'user' ? '#0b3c82' : '#fff',
+                    color: msg.role === 'user' ? '#fff' : '#1e293b',
+                    fontSize: '13px',
+                    lineHeight: '1.6',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+                    whiteSpace: 'pre-line',
                   }}
                 >
-                  <div
-                    style={{
-                      maxWidth: '85%',
-                      padding: '10px 14px',
-                      borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                      backgroundColor: msg.role === 'user' ? '#0b3c82' : '#fff',
-                      color: msg.role === 'user' ? '#fff' : '#1e293b',
-                      fontSize: '13px',
-                      lineHeight: '1.6',
-                      boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-                      whiteSpace: 'pre-line',
-                    }}
-                  >
-                    {renderText(msg.text)}
-                  </div>
+                  {renderText(msg.text)}
                 </div>
-
-                {/* Suggested FAQ buttons */}
-                {msg.suggestions && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingLeft: '4px' }}>
-                    {msg.suggestions.map((faq, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => handleSuggestionClick(faq)}
-                        style={{
-                          textAlign: 'left',
-                          padding: '9px 14px',
-                          borderRadius: '12px',
-                          border: '1.5px solid #dbeafe',
-                          backgroundColor: '#eff6ff',
-                          color: '#0b3c82',
-                          fontSize: '12.5px',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          fontFamily: 'Inter, sans-serif',
-                          lineHeight: '1.4',
-                          transition: 'background-color 0.15s',
-                        }}
-                        onMouseOver={(e) => { e.currentTarget.style.backgroundColor = '#dbeafe'; }}
-                        onMouseOut={(e) => { e.currentTarget.style.backgroundColor = '#eff6ff'; }}
-                      >
-                        📌 {faq.question}
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                {/* Quick-access chips */}
-                {msg.chips && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', paddingLeft: '4px' }}>
-                    {msg.chips.map((chip, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => handleChipClick(chip)}
-                        style={{
-                          padding: '5px 11px',
-                          borderRadius: '999px',
-                          border: '1px solid #e5e7eb',
-                          backgroundColor: '#fff',
-                          color: '#374151',
-                          fontSize: '11.5px',
-                          fontWeight: 500,
-                          cursor: 'pointer',
-                          fontFamily: 'Inter, sans-serif',
-                          transition: 'all 0.15s',
-                        }}
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.backgroundColor = '#0b3c82';
-                          e.currentTarget.style.color = '#fff';
-                          e.currentTarget.style.borderColor = '#0b3c82';
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.backgroundColor = '#fff';
-                          e.currentTarget.style.color = '#374151';
-                          e.currentTarget.style.borderColor = '#e5e7eb';
-                        }}
-                      >
-                        {chip.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
               </div>
-            ))}
-            <div ref={bottomRef} />
-          </div>
 
-          {/* Quick contact link */}
-          <div style={{ padding: '8px 16px', borderTop: '1px solid #f0f0f0', backgroundColor: '#fff' }}>
-            <a
-              href="/contatti"
-              style={{
-                display: 'block',
-                textAlign: 'center',
-                fontSize: '12px',
-                color: '#e30613',
-                fontWeight: 600,
-                textDecoration: 'none',
-                padding: '6px',
-              }}
-            >
-              Non hai trovato risposta? → Contattaci direttamente
-            </a>
-          </div>
+              {/* Suggested FAQ buttons */}
+              {msg.suggestions && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingLeft: '4px' }}>
+                  {msg.suggestions.map((faq, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => handleSuggestionClick(faq)}
+                      style={{
+                        textAlign: 'left',
+                        padding: '9px 14px',
+                        borderRadius: '12px',
+                        border: '1.5px solid #dbeafe',
+                        backgroundColor: '#eff6ff',
+                        color: '#0b3c82',
+                        fontSize: '12.5px',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        fontFamily: 'Inter, sans-serif',
+                        lineHeight: '1.4',
+                        transition: 'background-color 0.15s',
+                      }}
+                      onMouseOver={(e) => { e.currentTarget.style.backgroundColor = '#dbeafe'; }}
+                      onMouseOut={(e) => { e.currentTarget.style.backgroundColor = '#eff6ff'; }}
+                    >
+                      📌 {faq.question}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-          {/* Input area */}
-          <div
+              {/* Quick-access chips */}
+              {msg.chips && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', paddingLeft: '4px' }}>
+                  {msg.chips.map((chip, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => handleChipClick(chip)}
+                      style={{
+                        padding: '5px 11px',
+                        borderRadius: '999px',
+                        border: '1px solid #e5e7eb',
+                        backgroundColor: '#fff',
+                        color: '#374151',
+                        fontSize: '11.5px',
+                        fontWeight: 500,
+                        cursor: 'pointer',
+                        fontFamily: 'Inter, sans-serif',
+                        transition: 'all 0.15s',
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.backgroundColor = '#0b3c82';
+                        e.currentTarget.style.color = '#fff';
+                        e.currentTarget.style.borderColor = '#0b3c82';
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.backgroundColor = '#fff';
+                        e.currentTarget.style.color = '#374151';
+                        e.currentTarget.style.borderColor = '#e5e7eb';
+                      }}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+          <div ref={bottomRef} />
+        </div>
+
+        {/* Quick contact link */}
+        <div style={{ padding: '8px 16px', borderTop: '1px solid #f0f0f0', backgroundColor: '#fff' }}>
+          <a
+            href="/contatti"
             style={{
+              display: 'block',
+              textAlign: 'center',
+              fontSize: '12px',
+              color: '#e30613',
+              fontWeight: 600,
+              textDecoration: 'none',
+              padding: '6px',
+            }}
+          >
+            Non hai trovato risposta? → Contattaci direttamente
+          </a>
+        </div>
+
+        {/* Input area */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '8px',
+            padding: '12px 16px',
+            borderTop: '1px solid #f0f0f0',
+            backgroundColor: '#fff',
+            flexShrink: 0,
+            paddingBottom: '12px',
+          }}
+        >
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            placeholder="Scrivi la tua domanda..."
+            style={{
+              flex: 1,
+              padding: '9px 14px',
+              borderRadius: '12px',
+              border: '1.5px solid #e5e7eb',
+              fontSize: '13px',
+              outline: 'none',
+              fontFamily: 'Inter, sans-serif',
+              color: '#1e293b',
+              backgroundColor: '#f9fafb',
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => handleSend()}
+            style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '12px',
+              backgroundColor: '#0b3c82',
+              color: '#fff',
+              border: 'none',
+              cursor: 'pointer',
               display: 'flex',
-              gap: '8px',
-              padding: '12px 16px',
-              borderTop: '1px solid #f0f0f0',
-              backgroundColor: '#fff',
+              alignItems: 'center',
+              justifyContent: 'center',
               flexShrink: 0,
             }}
           >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Scrivi la tua domanda..."
-              style={{
-                flex: 1,
-                padding: '9px 14px',
-                borderRadius: '12px',
-                border: '1.5px solid #e5e7eb',
-                fontSize: '13px',
-                outline: 'none',
-                fontFamily: 'Inter, sans-serif',
-                color: '#1e293b',
-                backgroundColor: '#f9fafb',
-              }}
-            />
-            <button
-              type="button"
-              onClick={() => handleSend()}
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '12px',
-                backgroundColor: '#0b3c82',
-                color: '#fff',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            </button>
-          </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
         </div>
-      )}
+      </div>
     </>
   );
 }
