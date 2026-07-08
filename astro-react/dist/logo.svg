@@ -1,0 +1,14 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Punto rosso sopra la G -->
+  <circle cx="25" cy="8" r="6" fill="#e60000"/>
+  
+  <!-- G stilizzata -->
+  <path d="M20 15 C10 15 5 20 5 30 C5 40 10 45 20 45 C30 45 35 40 35 30 C35 25 32 22 28 22 L28 32 C28 35 25 38 20 38 C15 38 12 35 12 30 C12 25 15 22 20 22 L25 22 L25 15 Z" fill="#1a4d8c"/>
+  
+  <!-- F stilizzata -->
+  <path d="M45 15 L45 45 L55 45 L55 35 L65 35 L65 28 L55 28 L55 22 L70 22 L70 15 Z" fill="#1a4d8c"/>
+  
+  <!-- Testo CENTRO FELICEMENTE -->
+  <text x="80" y="25" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1a4d8c">CENTRO</text>
+  <text x="80" y="42" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#1a4d8c">FELICEMENTE</text>
+</svg>
