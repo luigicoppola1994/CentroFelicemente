@@ -1,130 +1,144 @@
 export default function Footer() {
   return (
-    <footer id="contatti" className="bg-gray-50 text-gray-800 pt-24 pb-12 relative overflow-hidden border-t border-gray-200">
-      {/* Soft decorative background glow matching the light theme */}
+    <footer
+      id="contatti"
+      className="relative overflow-hidden pt-20 pb-10 border-t border-gray-800"
+      style={{
+        backgroundColor: '#07162c',
+        color: '#94a3b8',
+        fontFamily: 'Inter, sans-serif',
+      }}
+    >
+      {/* Premium subtle background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-10 left-10 w-80 h-80 bg-[#e30613]/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#0b3c82]/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#e30613]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
           
-          {/* Column 1: Info, Opening Hours & Corporate Info (lg:col-span-4) */}
-          <div className="lg:col-span-4 space-y-8">
+          {/* Column 1: Branding & Opening Hours (lg:col-span-4) */}
+          <div className="lg:col-span-4 space-y-6">
             <div>
-              <span className="inline-block text-xs font-semibold tracking-wider text-[#0b3c82] bg-blue-50 px-3 py-1 rounded-full uppercase font-sans mb-4">
-                Orari & Info
-              </span>
-              <h3 className="text-xl font-display font-bold tracking-tight text-gray-900 mb-6 font-sans">ORARI DI APERTURA</h3>
-              <div className="p-5 rounded-2xl bg-white border border-gray-150 shadow-sm">
-                <div className="flex justify-between items-center font-sans">
-                  <span className="text-gray-600 font-medium">Lunedì - Sabato</span>
-                  <span className="text-white font-bold bg-[#0b3c82] px-3 py-1 rounded-lg text-sm">8:00 - 20:00</span>
-                </div>
-              </div>
+              <img
+                src="/centrofelicementelogo.png"
+                alt="Centro Felicemente"
+                className="h-14 w-auto mb-6 brightness-0 invert" // Invert logo to white for dark theme
+              />
+              <p className="text-sm text-slate-400 leading-relaxed font-sans max-w-sm">
+                Cooperativa Sociale Centro Felicemente. Professionalità e passione al servizio di chi ha bisogno, per l'età evolutiva e gli adulti.
+              </p>
             </div>
             
-            <div>
-              <h3 className="text-lg font-display font-bold tracking-tight text-gray-900 mb-4 font-sans">DATI SOCIETARI</h3>
-              <ul className="space-y-2.5 text-sm text-gray-600 font-sans">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#e30613]"></span>
-                  <span>PEC: <a href="mailto:centrofelicemente@pec.it" className="text-[#0b3c82] hover:underline">centrofelicemente@pec.it</a></span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0b3c82]"></span>
-                  <span>Email: <a href="mailto:info@centrofelicemente.it" className="text-[#0b3c82] hover:underline">info@centrofelicemente.it</a></span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0b3c82]"></span>
-                  <span>Codice Univoco: <strong className="text-gray-900">N92GLON</strong></span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0b3c82]"></span>
-                  <span>Partita IVA: <strong className="text-gray-900">12087780966</strong></span>
-                </li>
-              </ul>
+            <div className="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+              <span className="text-[11px] font-bold tracking-widest text-[#e30613] uppercase block mb-2">
+                Disponibilità
+              </span>
+              <h4 className="text-white font-bold text-base mb-3 font-sans">ORARI DI APERTURA</h4>
+              <div className="flex justify-between items-center text-sm font-sans">
+                <span className="text-slate-400 font-medium">Lunedì - Sabato</span>
+                <span className="text-white font-bold bg-[#0b3c82]/85 px-3 py-1 rounded-lg text-xs">
+                  8:00 - 20:00
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Column 2: Sede / Dove Siamo (lg:col-span-4) */}
+          {/* Column 2: Dove Siamo (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-6">
             <div>
-              <span className="inline-block text-xs font-semibold tracking-wider text-[#0b3c82] bg-blue-50 px-3 py-1 rounded-full uppercase font-sans mb-4">
-                Sede
+              <span className="text-[11px] font-bold tracking-widest text-[#0b3c82] bg-blue-900/30 px-3 py-1 rounded-full uppercase block w-max mb-4">
+                La Nostra Sede
               </span>
-              <h3 className="text-xl font-display font-bold tracking-tight text-gray-900 mb-6 font-sans">DOVE SIAMO</h3>
-              <p className="text-gray-600 text-base leading-relaxed mb-6 font-sans">
-                Il nostro centro medico specialistico è pronto ad accogliere i pazienti presso la sede principale, facilmente raggiungibile.
+              <h4 className="text-white font-bold text-lg mb-4 font-sans">DOVE SIAMO</h4>
+              <p className="text-sm text-slate-400 leading-relaxed mb-6 font-sans">
+                Il nostro centro medico specialistico è situato in una zona facilmente accessibile di Cusago.
               </p>
               
-              <div className="p-6 rounded-2xl bg-white border border-gray-150 shadow-sm space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="text-xl mt-0.5">📍</span>
-                  <p className="text-gray-800 font-medium font-sans text-base leading-relaxed">
-                    Viale Europa, 70<br />
-                    20090 Cusago (MI) - Italia
-                  </p>
+              <div className="space-y-4 font-sans">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-slate-800/60 flex items-center justify-center text-lg flex-shrink-0 mt-0.5 border border-slate-700/30">
+                    📍
+                  </div>
+                  <div>
+                    <h5 className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Indirizzo</h5>
+                    <p className="text-slate-200 text-sm leading-relaxed">
+                      Viale Europa, 70<br />
+                      20090 Cusago (MI) - Italia
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="w-full h-px bg-gray-150"></div>
-                
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">📞</span>
-                  <a href="tel:+390235954902" className="text-lg font-bold text-[#0b3c82] hover:text-[#e30613] transition-colors font-sans flex items-center gap-1.5 group">
-                    <span>02 3595 4902</span>
-                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-slate-800/60 flex items-center justify-center text-lg flex-shrink-0 border border-slate-700/30">
+                    📞
+                  </div>
+                  <div>
+                    <h5 className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-0.5">Telefono</h5>
+                    <a
+                      href="tel:+390235954902"
+                      className="text-base font-bold text-white hover:text-[#e30613] transition-colors flex items-center gap-1"
+                    >
+                      <span>02 3595 4902</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Column 3: Mappa (lg:col-span-4) */}
+          {/* Column 3: Navigatore & Dati Fiscali (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-6">
             <div>
-              <span className="inline-block text-xs font-semibold tracking-wider text-[#0b3c82] bg-blue-50 px-3 py-1 rounded-full uppercase font-sans mb-4">
-                Mappa
+              <span className="text-[11px] font-bold tracking-widest text-emerald-500 bg-emerald-950/30 px-3 py-1 rounded-full uppercase block w-max mb-4">
+                Google Maps
               </span>
-              <h3 className="text-xl font-display font-bold tracking-tight text-gray-900 mb-6 font-sans">NAVIGATORE</h3>
-              <div className="relative rounded-2xl overflow-hidden border border-gray-150 shadow-sm">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-44">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11199.143870731363!2d9.0485128!3d45.4338157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd33d5d415de0b343!2sCentro%20Felicemente!5e0!3m2!1sit!2sit!4v1672846733912!5m2!1sit!2sit"
                   width="100%"
-                  height="220"
+                  height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  className="opacity-95 hover:opacity-100 transition-opacity duration-300"
+                  className="opacity-90 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
+            </div>
+
+            <div className="space-y-1.5 font-sans text-xs text-slate-500">
+              <p>PEC: <a href="mailto:centrofelicemente@pec.it" className="text-slate-400 hover:underline">centrofelicemente@pec.it</a></p>
+              <p>Email: <a href="mailto:info@centrofelicemente.it" className="text-slate-400 hover:underline">info@centrofelicemente.it</a></p>
+              <p>Codice Univoco: <span className="text-slate-400">N92GLON</span></p>
+              <p>Partita IVA: <span className="text-slate-400">12087780966</span></p>
             </div>
           </div>
 
         </div>
 
+        {/* Divider */}
+        <div className="h-px bg-slate-800/80 mb-8"></div>
+
         {/* Bottom bar */}
-        <div className="border-t border-gray-250 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm text-center md:text-left font-sans">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-xs text-slate-500">
+          <p className="text-center md:text-left leading-relaxed">
             © 2026 Centro Felicemente | Centro Medico Specializzato |{' '}
-            <a href="/privacy" className="text-gray-600 hover:text-[#0b3c82] hover:underline transition-colors">
+            <a href="/privacy" className="text-slate-400 hover:text-white hover:underline transition-colors">
               Informativa privacy
             </a>{' '}
             |{' '}
-            <a href="/cookies" className="text-gray-400 hover:text-[#0b3c82] hover:underline transition-colors">
+            <a href="/cookies" className="text-slate-400 hover:text-white hover:underline transition-colors">
               Cookies
             </a>
           </p>
           
-          {/* Social */}
+          {/* Social Link */}
           <a
             href="https://www.facebook.com/centrofelicemente"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-white hover:bg-[#0b3c82] hover:border-[#0b3c82] transition-all duration-300 shadow-sm"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-[#0b3c82] hover:border-[#0b3c82] transition-all duration-300 shadow-lg"
             aria-label="Facebook"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
