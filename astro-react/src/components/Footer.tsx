@@ -9,11 +9,7 @@ export default function Footer() {
         fontFamily: 'Inter, sans-serif',
       }}
     >
-      {/* Subtle brand red glow at the corner to prevent a flat blue background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#e30613]/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-2xl"></div>
-      </div>
+      {/* Pure blue background - no decorative elements */}
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
