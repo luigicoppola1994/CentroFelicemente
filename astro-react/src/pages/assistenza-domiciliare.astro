@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Assistenza Domiciliare">
+  <Header client:load />
+
+  <main>
+    <PageHeader 
+      title="Assistenza Domiciliare" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Servizi', href: '/servizi' },
+        { label: 'Assistenza Domiciliare', href: '#' }
+      ]} 
+    />
+
+    {/* Section 1: Intro & Descrizione */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Content */}
+          <div class="lg:col-span-7 space-y-6 md:space-y-8">
+            <div class="space-y-3 md:space-y-4">
+              <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+                Post-Voucher
+              </span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+                Assistenza Sanitaria e Socio-Assistenziale al Domicilio
+              </h2>
+            </div>
+            
+            <div class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans space-y-5">
+              <p>
+                Il Centro Felicemente offre prestazioni socio-assistenziali e sanitarie erogate direttamente al domicilio di anziani, minori, persone con disabilità e persone a rischio di emarginazione.
+              </p>
+              <p>
+                Grazie al servizio, si intende <strong>favorire la permanenza</strong> nel normale ambiente di vita delle persone con fragilità, riducendo così le esigenze di ricorso a strutture residenziali o ricoveri prolungati.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div class="lg:col-span-5 relative group">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-[4/3] bg-gray-100">
+              <img 
+                src="/assdom-1.png" 
+                alt="Operatore sanitario che assiste un paziente a domicilio" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+            </div>
+            {/* Floating Badge */}
+            <div class="hidden sm:flex absolute -bottom-6 -left-2 bg-white/95 backdrop-blur-md shadow-2xl border border-gray-100 rounded-2xl p-4 items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-[#e30613] font-bold text-xl">🏠</div>
+              <div>
+                <p class="text-xs text-gray-500 font-medium font-sans">Erogato a casa</p>
+                <p class="text-sm text-gray-900 font-bold font-sans">Cura Domiciliare</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* Section 2: A chi è rivolto */}
+    <section class="py-16 md:py-24 bg-gray-50/50 border-t border-b border-gray-100">
+      <div class="container-custom">
+        <div class="max-w-4xl mx-auto space-y-12">
+          <div class="text-center space-y-4">
+            <span class="inline-block text-xs font-semibold tracking-widest text-[#0b3c82] bg-blue-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+              Destinatari del Servizio
+            </span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 tracking-tight">
+              A chi è rivolto
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0b3c82] font-bold">1</div>
+              <p class="text-gray-700 font-sans text-sm leading-relaxed">
+                Persone anziane e minori che vivono patologie acute o croniche con scarsa autosufficienza o a rischio di emarginazione sociale che necessitano di aiuto anche per un periodo temporaneo.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0b3c82] font-bold">2</div>
+              <p class="text-gray-700 font-sans text-sm leading-relaxed">
+                Persone adulte e minori totalmente non autosufficienti inserite in un nucleo familiare che necessita di assistenza.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0b3c82] font-bold">3</div>
+              <p class="text-gray-700 font-sans text-sm leading-relaxed">
+                Persone in dimissione da reparti ospedalieri con programmi di riabilitazione già prestabiliti dallo specialista.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 3: Cosa offre */}
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container-custom">
+        <div class="max-w-4xl mx-auto space-y-12">
+          <div class="text-center space-y-4">
+            <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+              Le Nostre Prestazioni
+            </span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 tracking-tight">
+              Cosa offre il servizio
+            </h2>
+          </div>
+
+          <div class="space-y-6">
+            {/* Servizio 1 */}
+            <div class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-100 bg-gray-50/30 hover:bg-gray-50/80 transition-colors duration-300">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-xl">🤝</div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-display font-bold text-gray-900">Cura alla persona per pazienti allettati o non autosufficienti</h3>
+                <p class="text-gray-600 font-sans text-sm leading-relaxed">
+                  Insieme di prestazioni che comprendono l'igiene personale, la mobilizzazione della persona, la prevenzione delle piaghe da decubito, la deambulazione eseguiti da personale OSS qualificato.
+                </p>
+              </div>
+            </div>
+
+            {/* Servizio 2 */}
+            <div class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-100 bg-gray-50/30 hover:bg-gray-50/80 transition-colors duration-300">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-xl">🧘‍♂️</div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-display font-bold text-gray-900">Servizi riabilitativi</h3>
+                <p class="text-gray-600 font-sans text-sm leading-relaxed">
+                  Trattamenti di fisioterapia, logopedia, psicologia dedicati al pieno recupero psico-fisico della persona presa in carico.
+                </p>
+              </div>
+            </div>
+
+            {/* Servizio 3 */}
+            <div class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-100 bg-gray-50/30 hover:bg-gray-50/80 transition-colors duration-300">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-xl">🩺</div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-display font-bold text-gray-900">Servizi infermieristici</h3>
+                <p class="text-gray-600 font-sans text-sm leading-relaxed">
+                  Servizi infermieristici programmati sulla base delle necessità del paziente e delle disposizioni mediche di riferimento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center pt-6">
+            <a href="/contatti" class="inline-flex items-center justify-center px-8 py-4 bg-[#0b3c82] hover:bg-[#082a5c] text-white rounded-xl font-bold transition-all duration-300 shadow-md hover:shadow-lg">
+              Richiedi Assistenza Domiciliare
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

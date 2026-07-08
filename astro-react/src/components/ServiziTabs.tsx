@@ -349,113 +349,72 @@ const services: ServiceItem[] = [
 export default function ServiziAccordion() {
   const [openId, setOpenId] = useState<string | null>(null);
 
+  const handleToggle = (id: string, buttonEl: HTMLButtonElement) => {
+    const isOpening = openId !== id;
+    setOpenId(isOpening ? id : null);
+    if (isOpening) {
+      setTimeout(() => {
+        buttonEl.parentElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-3">
       {services.map((service) => {
         const isOpen = openId === service.id;
-
+        
         return (
-          <div
+          <div 
             key={service.id}
-            style={{
-              borderRadius: '16px',
-              border: isOpen ? '1.5px solid rgba(11,60,130,0.18)' : '1.5px solid #f0f0f0',
-              background: '#ffffff',
-              boxShadow: isOpen ? '0 8px 30px rgba(11,60,130,0.07)' : '0 1px 4px rgba(0,0,0,0.04)',
-              overflow: 'hidden',
-              transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
-            }}
+            className={`bg-white rounded-3xl border transition-all duration-300 overflow-hidden ${
+              isOpen 
+                ? 'border-blue-200 shadow-lg shadow-blue-900/5' 
+                : 'border-gray-200/80 shadow-sm hover:border-gray-300'
+            }`}
           >
-            {/* Header */}
+            {/* Header / Clickable area */}
             <button
-              type="button"
-              onClick={() => setOpenId(isOpen ? null : service.id)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                width: '100%',
-                padding: '18px 24px',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                gap: '16px',
-                textAlign: 'left',
-              }}
+              onClick={(e) => handleToggle(service.id, e.currentTarget)}
+              className="w-full text-left p-6 md:p-8 flex items-center gap-4 md:gap-6 focus:outline-none"
+              aria-expanded={isOpen}
             >
-              {/* Icon */}
-              <span style={{
-                fontSize: '24px',
-                width: '48px',
-                height: '48px',
-                borderRadius: '12px',
-                background: isOpen ? 'rgba(11,60,130,0.08)' : '#f7f7f9',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                transition: 'background 0.3s',
-              }}>
+              <div className="text-3xl md:text-4xl select-none shrink-0 w-12 flex items-center justify-center">
                 {service.icon}
-              </span>
-
-              {/* Title + Summary */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{
-                  fontWeight: 700,
-                  fontSize: '17px',
-                  color: isOpen ? '#0b3c82' : '#1a1a2e',
-                  fontFamily: 'Inter, sans-serif',
-                  transition: 'color 0.2s',
-                }}>
-                  {service.title}
-                </div>
-                {!isOpen && (
-                  <div style={{
-                    fontSize: '13px',
-                    color: '#9ca3af',
-                    marginTop: '2px',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                    fontFamily: 'Inter, sans-serif',
-                  }}>
-                    {service.summary}
-                  </div>
-                )}
               </div>
-
-              {/* Chevron */}
-              <span style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: isOpen ? '#e30613' : '#f0f0f0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                transition: 'background 0.3s, transform 0.3s',
-                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={isOpen ? '#fff' : '#666'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 9l-7 7-7-7" />
+              
+              <div className="flex-1 min-w-0 text-left">
+                <h3 className="text-xl md:text-2xl font-display font-bold text-gray-900 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-500 font-sans mt-1">
+                  {service.summary}
+                </p>
+              </div>
+              
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 shrink-0 ${
+                isOpen 
+                  ? 'bg-[#0b3c82] border-[#0b3c82] text-white rotate-180' 
+                  : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'
+              }`}>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
-              </span>
+              </div>
             </button>
 
             {/* Expandable Body */}
-            <div
+            <div 
               style={{
                 transition: 'all 0.4s ease-in-out',
                 maxHeight: isOpen ? '2500px' : '0px',
                 opacity: isOpen ? 1 : 0,
                 overflow: 'hidden'
               }}
+              className={isOpen ? 'border-t border-gray-100' : ''}
             >
-              <div style={{ padding: '0 24px 24px 24px' }}>
-                <div style={{ borderTop: '1px solid #f0f0f0', paddingTop: '20px' }}>
-                  {service.content}
-                </div>
+              <div className="p-6 md:p-8 text-left">
+                {service.content}
               </div>
             </div>
           </div>

@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Diagnosi">
+  <Header client:load />
+
+  <main>
+    <PageHeader 
+      title="Diagnosi" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Servizi', href: '/servizi' },
+        { label: 'Diagnosi', href: '#' }
+      ]} 
+    />
+
+    {/* Section 1: Intro & Neuropsichiatra Infantile */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left: Content */}
+          <div class="lg:col-span-7 space-y-6 md:space-y-8">
+            <div class="space-y-3 md:space-y-4">
+              <span class="inline-block text-xs font-semibold tracking-widest text-[#0b3c82] bg-blue-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+                Diagnosi Specialistica
+              </span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+                Neuropsichiatra infantile:<br />chi è e cosa fa
+              </h2>
+            </div>
+            
+            <div class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans space-y-5">
+              <p>
+                Affidarsi alla équipe multidisciplinare di neuropsichiatria infantile non sempre è indice di un disturbo o di una malattia del bambino. 
+                Un consulto specialistico è uno strumento di aiuto, che permetterà al proprio figlio di crescere in maniera serena, armonica ed equilibrata.
+              </p>
+              <p>
+                A seconda dell’esito dell’inquadramento diagnostico, lo specialista potrà proporre ai genitori un <strong>progetto riabilitativo individualizzato</strong> per il bambino, che potrà prevedere trattamenti e percorsi differenti a seconda del caso e che spesso si avvalgono anche di strumentazioni innovative e tecnologicamente avanzate.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Image */}
+          <div class="lg:col-span-5 relative group">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-[4/3] bg-gray-100">
+              <img 
+                src="/immagine-per-diagnosi-1.jpg" 
+                alt="Equipe di diagnosi e consulto specialistico" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+            </div>
+            {/* Floating Badge */}
+            <div class="hidden sm:flex absolute -bottom-6 -left-2 bg-white/95 backdrop-blur-md shadow-2xl border border-gray-100 rounded-2xl p-4 items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0b3c82] font-bold text-xl">🩺</div>
+              <div>
+                <p class="text-xs text-gray-500 font-medium font-sans">Supporto Medico</p>
+                <p class="text-sm text-gray-900 font-bold font-sans">Equipe Multidisciplinare</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* Section 2: Diagnosi Precoce */}
+    <section class="py-16 md:py-24 bg-gray-50/50 border-t border-b border-gray-100">
+      <div class="container-custom">
+        <div class="max-w-4xl mx-auto space-y-8">
+          <div class="text-center space-y-4">
+            <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+              Intervento Tempestivo
+            </span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 tracking-tight">
+              L'importanza della Diagnosi Precoce
+            </h2>
+          </div>
+
+          <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 font-sans text-gray-600 space-y-6 text-base sm:text-lg leading-relaxed">
+            <p>
+              Numerosi studi sulla diagnosi precoce fanno leva sul fatto che la <strong>plasticità neuronale</strong> durante la fase evolutiva è molto elevata: questo significa che intervenendo prima si può veramente fare la differenza. 
+            </p>
+            <p>
+              Ad esempio, nel caso dei bambini a cui viene diagnosticato il <strong>disturbo dello spettro autistico</strong>, fare una diagnosi entro i primi tre anni di vita significa iniziare un percorso terapeutico molto precocemente, che permette al bambino di migliorare e acquisire nuove competenze negli ambiti che a lui sono più difficili.
+            </p>
+            <p>
+              Anche diagnosticare precocemente un <strong>disturbo dell’apprendimento</strong> è fondamentale, poiché il bambino potrà usufruire degli strumenti compensativi e dispensativi adatti che gli permetteranno quanto prima di avere un apprendimento adeguato alle sue necessità. È fondamentale farlo quanto prima anche per evitare che il bambino emotivamente si senta “sbagliato” o non adeguato rispetto ai suoi compagni di classe che magari possono avere un apprendimento più veloce. In tal modo si rafforzerà anche la sua autostima e si potenzieranno le sue capacità tramite gli strumenti forniti.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 3: Equipe */}
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container-custom">
+        <div class="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
+          <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-[#0b3c82] text-3xl mx-auto shadow-sm">
+            👥
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-gray-900">
+            Un'equipe al fianco delle famiglie
+          </h3>
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans">
+            La nostra equipe è costituita da medici e terapisti specializzati nell’ambito clinico-diagnostico e, posta la diagnosi, si rende disponibile per offrire un supporto sinergico a famiglie, insegnanti e altri specialisti coinvolti nell’intervento sul bambino/ragazzo.
+          </p>
+          <div class="pt-4">
+            <a href="/contatti" class="inline-flex items-center justify-center px-8 py-4 bg-[#0b3c82] hover:bg-[#082a5c] text-white rounded-xl font-bold transition-all duration-300 shadow-md hover:shadow-lg">
+              Contattaci per una Consulenza
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

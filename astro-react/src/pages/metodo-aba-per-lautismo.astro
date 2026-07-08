@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+import ABAPageContent from '../components/ABAPageContent';
+---
+
+<Layout title="Metodo ABA per l'Autismo">
+  <Header client:load />
+
+  <main>
+    <PageHeader 
+      title="Metodo ABA per l'Autismo" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Metodo ABA', href: '#' }
+      ]} 
+    />
+
+    {/* Main Content Section */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      {/* Soft background blurs */}
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        
+        {/* Page Subtitle Intro */}
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span class="inline-block text-xs font-semibold tracking-widest text-[#0b3c82] bg-blue-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+            Analisi Comportamentale Applicata
+          </span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+            Il percorso scientifico di crescita
+          </h2>
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans">
+            L'Analisi Comportamentale Applicata (ABA) offre un insieme di procedure scientifiche strutturate e cucite su misura, volte a migliorare la qualità di vita del bambino e della sua famiglia.
+          </p>
+        </div>
+
+        {/* 3 Interactive Cards Component */}
+        <ABAPageContent client:load />
+
+
+
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>
