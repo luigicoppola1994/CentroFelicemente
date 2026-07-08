@@ -27,13 +27,13 @@ export default function Services() {
   ];
 
   return (
-    <section id="servizi" className="pt-8 pb-24 bg-gray-50">
+    <section id="servizi" className="pt-8 pb-24 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
             I Nostri Servizi
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Offriamo una gamma completa di interventi e percorsi terapeutici per accompagnare ogni persona verso il proprio benessere.
           </p>
         </div>
