@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Chi Siamo">
+  <Header client:load />
+
+  <main>
+    {/* Page Header Riutilizzabile */}
+    <PageHeader 
+      title="Chi Siamo" 
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Chi Siamo', href: '#' }
+      ]} 
+    />
+
+    {/* Content Section - Stile Support.tsx */}
+    <section class="relative py-16 md:py-24 overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#e30613]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+          
+          {/* Left Content */}
+          <div class="space-y-6 md:space-y-8">
+            <div class="space-y-3 md:space-y-4">
+              <span class="inline-block text-xs font-semibold tracking-widest text-[#0b3c82] bg-blue-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+                Competenza ed Esperienza
+              </span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
+                Al servizio della persona
+              </h2>
+            </div>
+            
+            <div class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans space-y-4">
+              <p>
+                Abbiamo maturato una grossa competenza ed esperienza per le cure dei disturbi e delle patologie dell’età evolutiva e dell’adulto. Operiamo da anni nelle provincie di Milano e Pavia.
+              </p>
+              <p>
+                Abbiamo sviluppato servizi di riabilitazione <strong class="text-gray-900">logopedica, psicologica, psicomotoria, fisioterapica e socio-assistenziale</strong> in collaborazione con Enti e Fondazioni Lombarde.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Image - Stile ABAMethod */}
+          <div class="relative group md:px-8">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-[4/3] bg-gray-100">
+              <img 
+                src="/psychotherapist_counselling.png" 
+                alt="Couple counselling con psicoterapeuta" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+            </div>
+            {/* Floating Badge */}
+            <div class="hidden sm:flex absolute -bottom-6 -left-2 bg-white/95 backdrop-blur-md shadow-2xl border border-gray-100 rounded-2xl p-4 items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-[#e30613]/10 flex items-center justify-center text-[#e30613] font-bold text-xl">👩‍⚕️</div>
+              <div>
+                <p class="text-xs text-gray-500 font-medium font-sans">Staff qualificato</p>
+                <p class="text-sm text-gray-900 font-bold font-sans">Professionisti esperti</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* Mission Section - Continua in modo fluido dalla sezione sopra */}
+    <section class="pb-24 bg-white">
+      <div class="container-custom">
+        <div class="text-center mb-16 space-y-4">
+          <span class="inline-block text-xs font-semibold tracking-widest text-[#e30613] bg-red-50 px-3.5 py-1.5 rounded-full uppercase font-sans">
+            Il nostro obiettivo
+          </span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-gray-900 tracking-tight">
+            La nostra Missione è
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div class="card-elegant p-6 flex flex-col items-center text-center group">
+            <div class="w-16 h-16 rounded-2xl bg-[#0b3c82]/10 flex items-center justify-center text-[#0b3c82] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              ❤️
+            </div>
+            <p class="text-sm text-gray-600 font-sans leading-relaxed">
+              <strong class="text-gray-900 block mb-2 text-base">Offrire alle Famiglie</strong>
+              Servizi sanitari, psicologici e socio-assistenziali con i più alti standard di preparazione e l'empatia di chi fa questa professione con passione.
+            </p>
+          </div>
+
+          <div class="card-elegant p-6 flex flex-col items-center text-center group">
+            <div class="w-16 h-16 rounded-2xl bg-[#e30613]/10 flex items-center justify-center text-[#e30613] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              💡
+            </div>
+            <p class="text-sm text-gray-600 font-sans leading-relaxed">
+              <strong class="text-gray-900 block mb-2 text-base">Proporre Soluzioni</strong>
+              Proporre ai nostri assistiti soluzioni innovative che soddisfino le loro più particolari necessità.
+            </p>
+          </div>
+
+          <div class="card-elegant p-6 flex flex-col items-center text-center group">
+            <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-[#0b3c82] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              🤝
+            </div>
+            <p class="text-sm text-gray-600 font-sans leading-relaxed">
+              <strong class="text-gray-900 block mb-2 text-base">Collaborare</strong>
+              Collaborare con Enti, Fondazioni, Istituti Specializzati alla ricerca di nuove possibili soluzioni terapeutiche.
+            </p>
+          </div>
+
+          <div class="card-elegant p-6 flex flex-col items-center text-center group">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
+              📚
+            </div>
+            <p class="text-sm text-gray-600 font-sans leading-relaxed">
+              <strong class="text-gray-900 block mb-2 text-base">Produrre Competenze</strong>
+              Produrre continuamente competenze facendo formazione e puntando costantemente sulla qualità.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer client:load />
+</Layout>
