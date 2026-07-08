@@ -123,8 +123,8 @@ export default function Header() {
         <div className="relative z-10 flex flex-col h-full px-6 pt-24 pb-8 overflow-y-auto">
           
           {/* Logo in overlay */}
-          <div className="mb-6">
-            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-8 w-auto brightness-0 invert opacity-80" />
+          <div className="mb-6 flex justify-center">
+            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-14 w-auto brightness-0 invert" />
           </div>
 
           <nav className="flex flex-col">
