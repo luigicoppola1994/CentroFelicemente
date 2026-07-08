@@ -1,0 +1,91 @@
+export default function Stats() {
+  const stats = [
+    { 
+      number: '25', 
+      label: 'Operatori Qualificati',
+      icon: (
+        <img 
+          src="/icon_operatori_brand.svg" 
+          alt="Operatori Qualificati" 
+          className="w-16 h-16 object-contain rounded-2xl"
+        />
+      ),
+      colorClass: "from-[#0b3c82]/10 to-[#0b3c82]/5 text-[#0b3c82] border-[#0b3c82]/20"
+    },
+    { 
+      number: '2000', 
+      label: 'Ore di Terapia al Mese',
+      icon: (
+        <img 
+          src="/icon_terapia_brand.svg" 
+          alt="Ore di Terapia" 
+          className="w-16 h-16 object-contain rounded-2xl"
+        />
+      ),
+      colorClass: "from-[#e30613]/10 to-[#e30613]/5 text-[#e30613] border-[#e30613]/20"
+    },
+    { 
+      number: '100%',
+      label: 'Accreditamenti e Certificazioni DSA',
+      icon: (
+        <img 
+          src="/icon_certificazioni_brand.svg" 
+          alt="Certificazioni DSA" 
+          className="w-16 h-16 object-contain rounded-2xl"
+        />
+      ),
+      colorClass: "from-[#0b3c82]/10 to-[#0b3c82]/5 text-[#0b3c82] border-[#0b3c82]/20"
+    },
+    { 
+      number: 'H24',
+      label: 'Trattamenti Ambulatoriali e Domiciliari',
+      icon: (
+        <img 
+          src="/icon_trattamenti_brand.svg" 
+          alt="Trattamenti Ambulatoriali" 
+          className="w-16 h-16 object-contain rounded-2xl"
+        />
+      ),
+      colorClass: "from-[#e30613]/10 to-[#e30613]/5 text-[#e30613] border-[#e30613]/20"
+    },
+  ];
+
+  return (
+    <div className="bg-gray-50">
+      <section className="relative z-20 -mt-16 md:-mt-24 pb-20 px-4">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <div key={index} className="group relative">
+                {/* Overlapping Card with Glassmorphism to bleed into Hero Background */}
+                <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/40 group-hover:-translate-y-2 h-full flex items-center gap-5 overflow-hidden">
+                  {/* Accent glow on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
+                  
+                  {/* Icon Container */}
+                  <div className="flex-shrink-0">
+                    <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100 group-hover:bg-transparent group-hover:border-transparent transition-all duration-500">
+                      <div className="transform group-hover:scale-110 transition-transform duration-500 w-12 h-12 flex items-center justify-center">
+                        {stat.icon}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <div className="text-3xl font-extrabold text-gray-900 tracking-tight font-display">
+                      {stat.number}
+                    </div>
+                    <p className="text-gray-500 font-semibold text-xs leading-tight group-hover:text-gray-950 transition-colors duration-300 mt-0.5">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
