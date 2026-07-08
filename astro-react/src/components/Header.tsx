@@ -25,10 +25,10 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-xl shadow-sm border-b border-gray-200/50 py-2' 
-          : 'bg-white/80 backdrop-blur-md border-b border-transparent py-4'
+          ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-200/50 py-2' 
+          : 'bg-gray-50/90 backdrop-blur-lg border-b border-gray-200 py-4'
       }`}
     >
       <div className="container-custom">
