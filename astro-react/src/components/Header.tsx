@@ -120,14 +120,14 @@ export default function Header() {
         <div className="absolute top-20 -left-20 w-60 h-60 border-[30px] border-white/5 rounded-full pointer-events-none"></div>
 
         {/* Menu Content */}
-        <div className="relative z-10 flex flex-col h-full px-8 pt-28 pb-12">
+        <div className="relative z-10 flex flex-col h-full px-6 pt-24 pb-8 overflow-y-auto">
           
           {/* Logo in overlay */}
-          <div className="mb-10">
-            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-10 w-auto brightness-0 invert opacity-80" />
+          <div className="mb-6">
+            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-8 w-auto brightness-0 invert opacity-80" />
           </div>
 
-          <nav className="flex flex-col space-y-1 flex-1">
+          <nav className="flex flex-col">
             {[
               { href: '/', label: 'Home' },
               { href: '/chi-siamo', label: 'Chi siamo' },
@@ -140,13 +140,13 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`group flex items-center justify-between py-4 border-b border-white/10 text-white/80 hover:text-white font-sans font-semibold text-2xl tracking-tight transition-all duration-300 ${
+                className={`group flex items-center justify-between py-3 border-b border-white/10 text-white/80 hover:text-white font-sans font-semibold text-xl tracking-tight transition-all duration-300 ${
                   mobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
                 }`}
                 style={{ transitionDelay: `${80 + i * 50}ms` }}
               >
                 <span>{item.label}</span>
-                <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -154,15 +154,15 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className={`pt-8 transition-all duration-500 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: '450ms' }}>
+          <div className={`pt-4 transition-all duration-500 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: '450ms' }}>
             <a 
               href="/sostienici" 
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full bg-[#e30613] hover:bg-red-700 text-white rounded-2xl py-4 font-bold text-lg transition-all duration-300 shadow-lg shadow-red-900/30"
+              className="flex items-center justify-center w-full bg-[#e30613] hover:bg-red-700 text-white rounded-2xl py-3.5 font-bold text-base transition-all duration-300 shadow-lg shadow-red-900/30"
             >
               ❤️&nbsp; Sostienici Ora
             </a>
-            <p className="text-center text-white/40 text-sm mt-4 font-sans">
+            <p className="text-center text-white/40 text-xs mt-3 font-sans">
               Viale Europa, 70 — Cusago (MI)
             </p>
           </div>

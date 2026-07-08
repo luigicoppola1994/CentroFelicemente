@@ -4,7 +4,6 @@ export default function ABAMethod() {
       {/* Decorative background blurs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#0b3c82]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#e30613]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-custom relative z-10">
