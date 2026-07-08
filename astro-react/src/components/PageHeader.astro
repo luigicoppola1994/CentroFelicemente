@@ -5,55 +5,51 @@ interface Props {
 }
 
 const { title, breadcrumbs } = Astro.props;
+
+// Sostituisce le 'i' minuscole con una 'ı' (i senza puntino) e un puntino rosso posizionato in modo assoluto
+const titleWithRedDots = title.replace(
+  /i/g, 
+  '<span class="relative inline-block"><span aria-hidden="true" class="opacity-0">i</span><span class="absolute inset-0 text-white">ı</span><span class="absolute inset-0 text-[#e30613] origin-bottom font-bold" style="clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);">i</span></span>'
+);
 ---
 
 <div class="w-full">
-  {/* Banner background - Calm & Professional Aesthetic */}
-  <section class="relative bg-[#07224d] overflow-hidden">
-    {/* Soft, calm monochromatic mesh gradient */}
-    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
-      <div class="absolute -top-[50%] -left-[10%] w-[70%] h-[150%] bg-[#0b3c82] rounded-[100%] blur-[120px] opacity-70"></div>
-      <div class="absolute top-[10%] -right-[20%] w-[60%] h-[150%] bg-[#215aab] rounded-[100%] blur-[140px] opacity-40"></div>
-      <div class="absolute -bottom-[30%] left-[20%] w-[50%] h-[120%] bg-[#1453a8] rounded-[100%] blur-[100px] opacity-30"></div>
-    </div>
+  {/* Classic Professional Corporate Header */}
+  <section class="relative bg-gradient-to-r from-[#0b3c82] to-[#07224d] overflow-hidden">
     
-    {/* Subtle Dot Pattern Texture */}
-    <div class="absolute inset-0 z-0 opacity-[0.02]" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;"></div>
+    {/* Very subtle elegant texture to remove flatness */}
+    <div class="absolute inset-0 z-0 opacity-10 pointer-events-none" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 11px);"></div>
+    
+    {/* Large watermark of the logo */}
+    <div class="absolute -right-20 -top-40 w-96 h-96 border-[40px] border-white/5 rounded-full pointer-events-none"></div>
+    <div class="absolute -right-10 -top-20 w-64 h-64 border-[20px] border-white/5 rounded-full pointer-events-none"></div>
 
     {/* Content */}
-    <div class="container-custom relative z-10 py-6 md:py-8">
+    <div class="container-custom relative z-10 pt-14 pb-12 md:pt-16 md:pb-14 text-center md:text-left">
       <div class="max-w-4xl">
-        <h1 class="text-2xl md:text-4xl font-display font-bold text-white tracking-tight drop-shadow-sm">
-          {title}
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight leading-tight" set:html={titleWithRedDots}>
         </h1>
-        {/* Soft blue decorative line under title */}
-        <div class="h-1 w-12 bg-gradient-to-r from-blue-300 to-transparent mt-3 rounded-full opacity-60"></div>
       </div>
     </div>
-
-    {/* Bottom fade out to breadcrumb area */}
-    <div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
   </section>
 
-  {/* Premium Breadcrumbs */}
+  {/* Clean Minimalist Breadcrumbs */}
   {breadcrumbs && breadcrumbs.length > 0 && (
-    <div class="bg-gray-50/80 backdrop-blur-md border-b border-gray-200/60 py-3 shadow-sm relative z-20">
+    <div class="bg-gray-50 border-b border-gray-200 py-3 shadow-sm relative z-20">
       <div class="container-custom">
         <nav class="flex text-sm text-gray-500 font-sans" aria-label="Breadcrumb">
-          <ol class="inline-flex items-center space-x-1.5 md:space-x-3">
+          <ol class="inline-flex items-center space-x-2 md:space-x-3">
             {breadcrumbs.map((crumb, index) => (
               <li class="inline-flex items-center">
                 {index > 0 && (
-                  <svg class="w-3.5 h-3.5 text-gray-400/70 mx-1 md:mx-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                  </svg>
+                  <span class="text-gray-400 mx-2 select-none">/</span>
                 )}
                 {index === breadcrumbs.length - 1 ? (
-                  <span class="text-gray-900 font-semibold tracking-wide bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">
+                  <span class="text-gray-900 font-semibold tracking-wide">
                     {crumb.label}
                   </span>
                 ) : (
-                  <a href={crumb.href} class="inline-flex items-center hover:text-[#0b3c82] transition-colors font-medium tracking-wide">
+                  <a href={crumb.href} class="inline-flex items-center hover:text-[#0b3c82] transition-colors font-medium">
                     {crumb.label}
                   </a>
                 )}
