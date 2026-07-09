@@ -354,8 +354,17 @@ export default function ServiziAccordion() {
     setOpenId(isOpening ? id : null);
     if (isOpening) {
       setTimeout(() => {
-        buttonEl.parentElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+        const element = buttonEl.parentElement;
+        if (element) {
+          const elementRect = element.getBoundingClientRect();
+          const absoluteElementTop = elementRect.top + window.pageYOffset;
+          const headerOffset = 90; // Height of sticky header + spacing
+          window.scrollTo({
+            top: absoluteElementTop - headerOffset,
+            behavior: 'smooth'
+          });
+        }
+      }, 200);
     }
   };
 

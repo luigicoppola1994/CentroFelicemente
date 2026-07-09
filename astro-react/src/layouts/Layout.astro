@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner';
 import ChatBot from '../components/ChatBot';
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
 }
@@ -21,10 +22,11 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <ViewTransitions />
   </head>
   <body>
     <slot />
-    <CookieBanner client:load />
-    <ChatBot client:load />
+    <CookieBanner client:load transition:persist />
+    <ChatBot client:load transition:persist />
   </body>
 </html>
