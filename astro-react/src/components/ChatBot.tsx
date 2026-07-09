@@ -156,7 +156,7 @@ export default function ChatBot() {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const documentHeight = document.documentElement.scrollHeight;
-      
+
       // Se si è a meno di 350px dalla fine della pagina, diventiamo bianchi
       if (documentHeight - scrollPosition < 350) {
         setIsNearFooter(true);
@@ -379,14 +379,14 @@ export default function ChatBot() {
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
               }}
             >
-              <img src="/faviconcentro.jpg" alt="Logo Centro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src="/faviconcentro.png" alt="Logo Centro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <div>
               <p style={{ fontWeight: 700, fontSize: '14px', margin: 0 }}>Assistente</p>
               <p style={{ fontSize: '11px', opacity: 0.75, margin: 0 }}>Centro Felicemente</p>
             </div>
           </div>
-          
+
           <button
             onClick={() => setOpen(false)}
             aria-label="Chiudi"
