@@ -134,6 +134,7 @@ type Msg = {
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
   const [isNearFooter, setIsNearFooter] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
     {
       id: 0,
@@ -167,6 +168,15 @@ export default function ChatBot() {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // controllo iniziale
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Ascolta apertura/chiusura menu mobile
+  useEffect(() => {
+    const handleMenuToggle = (e: Event) => {
+      setIsMobileMenuOpen((e as CustomEvent).detail.open);
+    };
+    window.addEventListener('mobileMenuToggle', handleMenuToggle);
+    return () => window.removeEventListener('mobileMenuToggle', handleMenuToggle);
   }, []);
 
   const addMsg = (msg: Omit<Msg, 'id'>) => {
@@ -300,8 +310,8 @@ export default function ChatBot() {
         }
       `}</style>
 
-      {/* Floating button - Nascosto quando la chat è aperta */}
-      {!open && (
+      {/* Floating button - Nascosto quando la chat è aperta o il menu mobile è aperto */}
+      {!open && !isMobileMenuOpen && (
         <button
           type="button"
           onClick={() => setOpen(true)}

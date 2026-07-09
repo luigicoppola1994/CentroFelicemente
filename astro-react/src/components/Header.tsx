@@ -20,13 +20,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open + notify other components
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
+    window.dispatchEvent(new CustomEvent('mobileMenuToggle', { detail: { open: mobileMenuOpen } }));
     return () => { document.body.style.overflow = ''; };
   }, [mobileMenuOpen]);
 
@@ -120,11 +121,20 @@ export default function Header() {
         <div className="absolute top-20 -left-20 w-60 h-60 border-[30px] border-white/5 rounded-full pointer-events-none"></div>
 
         {/* Menu Content */}
-        <div className="relative z-10 flex flex-col h-full px-6 pt-24 pb-8 overflow-y-auto">
-          
-          {/* Logo in overlay */}
-          <div className="mb-6 flex justify-center">
-            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-14 w-auto brightness-0 invert" />
+        <div className="relative z-10 flex flex-col h-full px-6 pt-6 pb-8 overflow-y-auto">
+
+          {/* Top bar: Logo + close X */}
+          <div className="flex items-center justify-between mb-8">
+            <img src="/centrofelicementelogo.png" alt="Centro Felicemente" className="h-12 w-auto brightness-0 invert" />
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Chiudi menu"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
 
           <nav className="flex flex-col">
