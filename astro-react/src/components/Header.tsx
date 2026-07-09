@@ -145,39 +145,37 @@ export default function Header() {
               { href: '/certificazioni', label: 'Certificazioni' },
               { href: '/progetti', label: 'Progetti' },
               { href: '/contatti', label: 'Contatti' },
-              { href: '#chatbot', label: 'Assistente Virtuale', isChat: true }
-            ].map((item, i) => {
-              const handleClick = (e: React.MouseEvent) => {
-                setMobileMenuOpen(false);
-                if (item.isChat) {
-                  e.preventDefault();
-                  // Aspetta che si chiuda il menu per una transizione più fluida
-                  setTimeout(() => {
-                    window.dispatchEvent(new CustomEvent('openChatBot'));
-                  }, 300);
-                }
-              };
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={handleClick}
-                  className={`group flex items-center justify-between py-3 border-b border-white/10 text-white/80 hover:text-white font-sans font-semibold text-xl tracking-tight transition-all duration-300 ${
-                    mobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${80 + i * 50}ms` }}
-                >
-                  <span>{item.label}</span>
-                  <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7-7" />
-                  </svg>
-                </a>
-              );
-            })}
+            ].map((item, i) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`group flex items-center justify-between py-3 border-b border-white/10 text-white/80 hover:text-white font-sans font-semibold text-xl tracking-tight transition-all duration-300 ${
+                  mobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
+                }`}
+                style={{ transitionDelay: `${80 + i * 50}ms` }}
+              >
+                <span>{item.label}</span>
+                <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7-7" />
+                </svg>
+              </a>
+            ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className={`pt-4 transition-all duration-500 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: '450ms' }}>
+          {/* CTA Buttons */}
+          <div className={`pt-6 space-y-3 transition-all duration-500 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: '400ms' }}>
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setTimeout(() => {
+                  window.dispatchEvent(new CustomEvent('openChatBot'));
+                }, 300);
+              }}
+              className="flex items-center justify-center w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-3.5 font-bold text-base transition-all duration-300 shadow-md"
+            >
+              💬&nbsp; Assistente Virtuale
+            </button>
             <a 
               href="/sostienici" 
               onClick={() => setMobileMenuOpen(false)}
