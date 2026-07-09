@@ -295,8 +295,8 @@ export default function ProgettiAccordion() {
             {/* Expandable Body */}
             <div 
               style={{
-                transition: 'all 0.4s ease-in-out',
-                maxHeight: isOpen ? '3500px' : '0px',
+                transition: 'all 0.5s ease-in-out',
+                maxHeight: isOpen ? '9999px' : '0px',
                 opacity: isOpen ? 1 : 0,
                 overflow: 'hidden'
               }}
