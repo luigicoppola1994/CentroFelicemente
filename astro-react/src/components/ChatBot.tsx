@@ -175,8 +175,15 @@ export default function ChatBot() {
     const handleMenuToggle = (e: Event) => {
       setIsMobileMenuOpen((e as CustomEvent).detail.open);
     };
+    const handleOpenChat = () => {
+      setOpen(true);
+    };
     window.addEventListener('mobileMenuToggle', handleMenuToggle);
-    return () => window.removeEventListener('mobileMenuToggle', handleMenuToggle);
+    window.addEventListener('openChatBot', handleOpenChat);
+    return () => {
+      window.removeEventListener('mobileMenuToggle', handleMenuToggle);
+      window.removeEventListener('openChatBot', handleOpenChat);
+    };
   }, []);
 
   const addMsg = (msg: Omit<Msg, 'id'>) => {
