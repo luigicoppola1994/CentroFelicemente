@@ -382,7 +382,7 @@ export default function ChatBot() {
               <img src="/faviconcentro.jpg" alt="Logo Centro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <div>
-              <p style={{ fontWeight: 700, fontSize: '14px', margin: 0 }}>Assistente</p>
+              <p style={{ fontWeight: 700, fontSize: '14px', margin: 0 }}>Assistente Virtuale</p>
               <p style={{ fontSize: '11px', opacity: 0.75, margin: 0 }}>Centro Felicemente</p>
             </div>
           </div>
